@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Card */
+.card {
+    aspect-ratio: 3 / 4;
+    width: 100px;
+    border: 1px solid red;
+
+}
+
+.removed {
+    visibility: hidden;
+}

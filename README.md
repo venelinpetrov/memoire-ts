@@ -49,3 +49,9 @@ Mémoire is a single-player puzzle game where the goal is to find all matching p
 - Score
 - Level
 
+4. Animations
+
+- Card flip
+- Card disappear
+- Draw cards to the board (maybe)
+

@@ -26,6 +26,7 @@ Mémoire is a single-player puzzle game where the goal is to find all matching p
 - Score (move count)
 - Difficulty levels (more cards)
 - Win condition
+- Reset / Start over
 
 ## Implementation (plan)
 
@@ -34,10 +35,12 @@ Mémoire is a single-player puzzle game where the goal is to find all matching p
 - Card
 - Board
 - Score
+- Minimal UI for e.g. New game / start over etc. (TBD)
 
 2. Event handling
 
 - Click on each card
+- Start over
 
 3. State
 

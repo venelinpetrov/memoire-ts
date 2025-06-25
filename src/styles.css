@@ -6,12 +6,23 @@ html, body {
 
 /* Card */
 .card {
-    aspect-ratio: 3 / 4;
-    width: 100px;
-    border: 1px solid red;
 
+    border: 1px solid red;
 }
 
 .removed {
     visibility: hidden;
+}
+
+/* Board */
+.board {
+    display: grid;
+    aspect-ratio: 1/ 1;
+    max-height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+}
+.disabled {
+    pointer-events: none;
 }

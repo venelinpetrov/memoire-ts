@@ -7,7 +7,7 @@ const CARD_NAMES = [
 const CARD_SUITS = ['clubs', 'diamonds', 'hearts', 'spades'];
 
 const generateDeck = (): string[] => {
-    return CARD_NAMES.flatMap(name => CARD_SUITS.map(suit => `${name}_${suit}`));
+    return CARD_NAMES.flatMap(name => CARD_SUITS.map(suit => `${suit}_${name}`));
 };
 
 const shuffle =<T,>(arr: T[]): T[] => {

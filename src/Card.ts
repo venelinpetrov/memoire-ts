@@ -28,7 +28,9 @@ export class Card {
     }
 
     update() {
-        this.el.textContent = this.opened ? this.name : '';
+        this.el.style.backgroundImage = this.opened ?
+            `url(../public/cards/front/${this.name}.svg)`
+            : `url('../public/cards/back/blue.svg')`;
         this.el.classList.toggle('removed', this.removed);
     }
 

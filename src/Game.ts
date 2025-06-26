@@ -33,8 +33,14 @@ export class Game {
             const [first, second] = this.openedCards;
 
             if (first.name === second.name) {
-                this.openedCards.forEach(c => c.remove());
-                this.openedCards = [];
+                this.boardEl.classList.add('disabled');
+                setTimeout(() => {
+                    this.openedCards.forEach(c => c.remove());
+                    this.openedCards = [];
+                    this.boardEl.classList.remove('disabled');
+
+                }, 500);
+
             } else {
                 this.boardEl.classList.add('disabled');
                 setTimeout(() => {

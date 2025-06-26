@@ -3,31 +3,27 @@ const CARD_NAMES = [
     'jack', 'queen', 'king', 'ace'
 ];
 
-const CARD_SUITS = [
-    'clubs',
-    'diamonds',
-    'hearts',
-    'spades'
-];
 
-const DECK = CARD_NAMES.reduce<string[]>((deck, cardName) => {
-    return deck.concat(CARD_SUITS.map(suit => `${cardName}_${suit}`));
-}, []);
+const CARD_SUITS = ['clubs', 'diamonds', 'hearts', 'spades'];
 
-function shuffle<T,>(arr: T[]): T[] {
+const generateDeck = (): string[] => {
+    return CARD_NAMES.flatMap(name => CARD_SUITS.map(suit => `${name}_${suit}`));
+};
+
+const shuffle =<T,>(arr: T[]): T[] => {
     return arr
         .map(name => ({ name, rand: Math.random() }))
         .toSorted((a, b) => a.rand - b.rand)
         .map(card => card.name);
 }
 
-export const createDeck = (n: number) => {
-    if (n % 2 != 0) {
+export const createDeck = (gridSize: number) => {
+    if (gridSize % 2 != 0) {
         throw new Error("Only even numbers are allowed");
     }
 
-    const N = n * n / 2;
-    const shuffled = shuffle(DECK).slice(0, N);
+    const numPairs = gridSize * gridSize / 2;
+    const shuffled = shuffle(generateDeck()).slice(0, numPairs);
     const shuffled2 = shuffle(shuffled);
 
     return [...shuffled, ...shuffled2];

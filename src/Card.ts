@@ -1,50 +1,48 @@
 export class Card {
-    private _name: string;
-    private opened: boolean = false;
-    private el: HTMLDivElement | null = null;
-    private callback: (name: string) => void;
+    private opened = false;
+    private removed = false;
+    private el: HTMLDivElement;
+    private onClick: () => void = () => { };
 
-    constructor(name: string) {
-        this._name = name;
-        this.callback = () => null;
+    constructor(public readonly name: string) {
         this.el = document.createElement('div');
-        this.el.addEventListener('click', () => this.open(), false);
+        this.el.classList.add('card');
+        this.el.addEventListener('click', () => this.handleClick());
+        this.update();
     }
 
-    onOpen(callback: (name: string) => void) {
-        this.callback = callback;
+    private handleClick() {
+        if (!this.opened && !this.removed) {
+            this.opened = true;
+            this.update();
+            this.onClick();
+        }
     }
 
-    render() {
-        const el = this.el!;
-        el.classList.add('card');
-        el.innerHTML = this.opened ? this._name : '';
-        return el;
+    setOnClick(fn: () => void) {
+        this.onClick = fn;
+    }
+
+    getElement(): HTMLDivElement {
+        return this.el;
+    }
+
+    update() {
+        this.el.textContent = this.opened ? this.name : '';
+        this.el.classList.toggle('removed', this.removed);
     }
 
     close() {
         this.opened = false;
-        this.render();
+        this.update();
     }
 
     remove() {
-        this.el?.classList.add('removed');
-        this.render();
+        this.removed = true;
+        this.update();
     }
 
-    get name() {
-        return this._name;
+    isOpened(): boolean {
+        return this.opened;
     }
-
-    private open() {
-        if (this.opened) {
-            return;
-        }
-        this.opened = true;
-        this.render();
-        this.callback(this._name);
-    }
-
-
-
 }

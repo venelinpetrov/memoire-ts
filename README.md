@@ -55,3 +55,6 @@ Mémoire is a single-player puzzle game where the goal is to find all matching p
 - Card disappear
 - Draw cards to the board (maybe)
 
+---
+
+Card svgs: [link](https://www.tekeye.uk/playing_cards/svg-playing-cards#google_vignette)

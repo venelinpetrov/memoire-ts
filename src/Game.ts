@@ -3,13 +3,16 @@ import { createBoard } from './Board';
 import { createDeck } from './Deck';
 
 export class Game {
+    private moveCount = 0;
     private openedCards: Card[] = [];
+    private counter: HTMLDivElement;
     private boardEl: HTMLDivElement;
     private deck: string[];
 
     constructor(gridSize: number) {
         this.boardEl = createBoard(gridSize);
         this.deck = createDeck(gridSize);
+        this.counter = document.querySelector<HTMLDivElement>('.counter')!;
     }
 
     start() {
@@ -18,14 +21,17 @@ export class Game {
             card.setOnClick(() => this.handleCardClick(card));
             this.boardEl.appendChild(card.getElement());
         });
+        this.counter.innerHTML = String(this.moveCount);
 
-        document.querySelector<HTMLDivElement>('#app')!.appendChild(this.boardEl);
     }
 
     private handleCardClick(card: Card) {
         if (this.openedCards.includes(card)) {
             return;
         }
+
+        this.moveCount += 1;
+        this.counter.innerHTML = String(Math.floor(this.moveCount  / 2));
 
         this.openedCards.push(card);
 

@@ -2,6 +2,8 @@
 
 Mémoire is a single-player puzzle game where the goal is to find all matching pairs of cards on a grid by flipping them two at a time. The challenge lies in remembering the position of each card.
 
+[Screencast from 2025-06-27 10-52-51.webm](https://github.com/user-attachments/assets/14e68fb6-6566-45a2-a877-1be632875780)
+
 ## Description
 
 **Setup**
